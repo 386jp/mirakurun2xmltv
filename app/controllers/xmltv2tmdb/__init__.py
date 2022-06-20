@@ -25,6 +25,7 @@ def get_program_data_cleaned(program: ET.Element) -> dict:
 
     # タイトル前処理
     title = title.replace('ミニ', ' ミニ')
+    title = title.replace('SP', ' SP')
     title = title.replace('!', '! ')
 
     # タイトルタグとタイトルを分離
