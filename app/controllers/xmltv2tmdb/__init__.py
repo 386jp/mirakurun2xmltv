@@ -17,9 +17,6 @@ def get_program_data_cleaned(program: ET.Element) -> dict:
         if str(c.text).startswith('映画'):
             is_movie = True
 
-    # 全角スペースを区切り文字に変換
-    title = title.replace('　', '_')
-
     # 全角文字を半角文字に変換
     title = mojimoji.zen_to_han(title, kana=False)
 
