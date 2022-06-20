@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "mirakurun2xmltv"
+version = "0.0.1"
+description = "mirakurun2xmltv"
+authors = ["Kyosuke Miyamura <ask@386.jp>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.10"
+
+pytest = "^6.2.5"
+python-dotenv = "^0.19.2"
+
+fastapi = "^0.70.0"
+fastapi-utils = "^0.2.1"
+python-multipart = "^0.0.5"
+gunicorn = "^20.1.0"
+uvicorn = {extras = ["standard"], version = "^0.15.0"}
+
+requests = "^2.27.1"
+
+mojimoji = "^0.0.11"
+tmdbsimple = "^2.9.1"
+kanjize = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+ipykernel = "^6.15.0"
+notebook = "^6.4.12"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+run_server = "run:main"
