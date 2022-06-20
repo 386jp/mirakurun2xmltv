@@ -18,7 +18,7 @@ def get_program_data_cleaned(program: ET.Element) -> dict:
             is_movie = True
 
     # 全角スペースを区切り文字に変換
-    title = title.replace('　', '▽')
+    title = title.replace('　', '_')
 
     # 全角文字を半角文字に変換
     title = mojimoji.zen_to_han(title, kana=False)
@@ -61,8 +61,12 @@ def get_program_data_cleaned(program: ET.Element) -> dict:
                 main_title = title_alt2[0]
                 sub_title = title_alt2[1]
             else:
-                main_title = title_alt2[0]
-                sub_title = ""
+                if len(title_chunks) == 2:
+                    main_title = title_chunks[0]
+                    sub_title = title_chunks[1]
+                else:
+                    main_title = title_alt2[0]
+                    sub_title = ""
         else:
             if title:
                 main_title = title

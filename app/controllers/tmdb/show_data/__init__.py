@@ -27,10 +27,18 @@ def _get_tmdb_data(t: str, is_movie: bool = False) -> Optional[dict]:
 def get_tmdb_matched_show(title_chunks: list[str], is_movie: bool = False) -> Tuple[Optional[str], Optional[dict]]:
     # Group of chunks
     for ti in range(len(title_chunks)):
-        t = ' '.join(title_chunks[:ti + 1])
-        tmdb_data = _get_tmdb_data(t, is_movie)
-        if tmdb_data:
-            return t, tmdb_data
+        if ti != 0:
+            t = ' '.join(title_chunks[:ti + 1])
+            tmdb_data = _get_tmdb_data(t, is_movie)
+            if tmdb_data:
+                return t, tmdb_data
+    # Group of chunks 2nd
+    for ti in range(len(title_chunks)):
+        if ti != 0:
+            t = ' '.join(title_chunks[1:ti + 1])
+            tmdb_data = _get_tmdb_data(t, is_movie)
+            if tmdb_data:
+                return t, tmdb_data
     # Single title
     for t in title_chunks:
         tmdb_data = _get_tmdb_data(t, is_movie)
